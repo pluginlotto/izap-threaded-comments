@@ -23,14 +23,51 @@ if($validated) {
   $entity = new IzapThreadedComments($CONFIG->post_byizap->attributes['guid'], array('post'=>&$CONFIG->post_byizap));
   if($entity->save()) {
     $entity = new IzapThreadedComments($entity->guid);
+    $main_entity = get_entity($entity->main_entity);
+
+    // save user who commented on this entity, with it
+    func_izap_update_metadata(array(
+            'entity' => $main_entity,
+            'metadata' => array(
+                    'commented_users' => array_unique(
+                    array_merge(
+                    (array) $main_entity->commented_users,
+                    (array) $entity->owner_guid
+                    )
+                    ),
+
+                    'commented_emails' => array_unique(
+                    array_merge(
+                    (array) $main_entity->commented_emails,
+                    (array) $entity->getOwnerEntity()->email
+                    )
+                    ),
+            ),
+    ));
+    // end user saving
 
     // send notification
     if($entity->owner_guid != get_loggedin_userid()) {
-      $main_entity = get_entity($entity->main_entity);
       $subject = sprintf(elggb_echo('threaded_comment_notify_subject'), $main_entity->title);
       $message = func_izap_bridge_view('home/notify_msg', array('plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN, 'entity' => $entity));
       notify_user($main_entity->owner_guid, $CONFIG->site->guid, $subject, $message);
     }
+
+
+    if(is_array($main_entity->commented_emails) && sizeof($main_entity->commented_emails)) {
+      $email_ids = $main_entity->commented_emails;
+      foreach($email_ids as $email) {
+        $send_array['subject'] = sprintf(elggb_echo('threaded_comment_notify_subject'), $main_entity->title);
+        $send_array['to'] = $email;
+        $send_array['from_username'] = $CONFIG->site->name;
+        $send_array['from'] = $CONFIG->site->email;
+        $send_array['msg'] = func_izap_bridge_view('home/notify_msg', array('plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN, 'entity' => $entity));
+        func_send_mail_byizap($send_array);
+      }
+    }
+    
+  }
+
     // notification end
 
     $html_output = elgg_view_entity($entity);

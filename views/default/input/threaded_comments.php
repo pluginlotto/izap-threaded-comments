@@ -20,9 +20,9 @@
 <?php
 $main_entity_guid = ($vars['main_entity']->guid>0) ? $vars['main_entity']->guid : $vars['entity']->guid;
 $rss_url = func_set_href_byizap(array(
-  'plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN,
-  'page' => 'rss',
-  'vars' => array($main_entity_guid),
+        'plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN,
+        'page' => 'rss',
+        'vars' => array($main_entity_guid),
 ));
 ?>
 <div class="contentWrapper">
@@ -43,8 +43,8 @@ $rss_url = func_set_href_byizap(array(
     'main_entity_guid' => $main_entity_guid,
     'postArray'=>$vars['postArray'],
     'resultId'=>"threaded_comments",
-      'div_placement' => 'append',
-      )
+    'div_placement' => 'append',
+    )
     );
   }
   ?>
