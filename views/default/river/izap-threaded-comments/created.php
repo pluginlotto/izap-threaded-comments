@@ -20,12 +20,12 @@ $main_entity = get_entity($object->main_entity);
 
 $string = "<a href=\"{$performed_by->getURL()}\">{$performed_by->name}</a>";
 $contents = strip_tags($object->description); //strip tags from the contents to stop large images etc blowing out the river view
-$string .= ' has commented on ';
+$string .= ' '.elgg_echo('izap-threaded-comments:has_commented_on').' ';
 $string .= "<a href=\"" . $object->getUrl() . "\">" . $object->title . "</a>";
 $string .= "<div class=\"river_content_display\">";
 
 if(strlen($contents) > 200) {
-  $string .= substr($contents, 0, strpos($contents, ' ', 200)) . "...";
+  $string .= substr($contents, 0, 200) . " ...";
 }else {
   $string .= $contents;
 }

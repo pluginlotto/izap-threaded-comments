@@ -16,4 +16,5 @@
 $english = array(
   'comments_rss' => 'Subscribe the comments feed',
   'rss_page_title' => 'Rss feed for the comments',
+  'izap-threaded-comments:has_commented_on' => 'has commented on',
 );add_translation('en', $english);
