@@ -36,8 +36,6 @@ $rss_url = func_set_href_byizap(array(
   ?>
   <?php
   if(isloggedin()) {
-    $minimum_post_time = func_get_custom_value_byizap(array('plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN, 'var' => 'minimum_comment_post_time'));
-    echo '<b><em>' . sprintf(elggb_echo('minimum_time'), $minimum_post_time) . ' Sec.</em></b>';
     echo func_izap_bridge_view('forms/comment', array(
     'plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN,
     'parent_guid'=> $vars['entity']->guid,

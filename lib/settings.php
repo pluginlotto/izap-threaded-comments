@@ -61,7 +61,6 @@ return array(
                                         'func_delete_comments_event'
                                 ),
                         ),
-
                 ),
         ),
 
