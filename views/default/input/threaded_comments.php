@@ -27,9 +27,13 @@ $rss_url = func_set_href_byizap(array(
 ?>
 <div class="contentWrapper">
   <div align="right">
-    <a href="<?php echo $rss_url?>" title="<?php echo elgg_view('comments_rss')?>">
-      <img src="<?php echo func_get_www_path_byizap(array('plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN, 'type' => 'images'));?>rss_comments.png" alt="<?php echo elgg_view('comments_rss')?>"/>
-    </a>
+    <a 
+      href="<?php echo $rss_url?>"
+      title="<?php echo elgg_echo('comments_rss')?>"><img
+        src="<?php echo func_get_www_path_byizap(array(
+          'plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN,
+          'type' => 'images'));?>rss_comments.png"
+          alt="<?php echo elgg_echo('comments_rss')?>"/></a>
   </div>
   <?php
   echo $vars['isForm']?"":elgg_view('output/threaded_comments', array('entity'=>$vars['entity']) );
