@@ -50,7 +50,7 @@ class IzapThreadedComments extends IzapObject {
     return FALSE;
   }
 
-  public function delete() {
+  public function delete($force = FALSE) {
     // get main entity
     $main_entity = get_entity($this->main_entity);
     // check the child
@@ -72,7 +72,10 @@ class IzapThreadedComments extends IzapObject {
     func_hook_access_over_ride_byizap(array('status' => TRUE));
     $main_entity->total_comments = (int) $main_entity->total_comments - 1;
     func_hook_access_over_ride_byizap(array('status' => FALSE));
-    
+
+    if($force) {
+      func_hook_access_over_ride_byizap(array('status' => TRUE));
+    }
     return delete_entity($this->guid, TRUE);
   }
 
