@@ -15,7 +15,6 @@ gatekeeper();
 global $CONFIG;
 $error = FALSE;
 
-
 // check if from is validated
 if(!IzapBase::hasFormError()) {
 
@@ -74,6 +73,6 @@ if(!IzapBase::hasFormError()) {
 }
 
 if($error) {
-  register_error(elgg);
+  register_error(elgg_Echo('izap-threaded-comments:form_not_validated'));
 }
 echo $html_output;
