@@ -15,5 +15,10 @@
 define('GLOBAL_THREADED_COMMENTS_PLUGIN', 'izap-threaded-comments');
 define('GLOBAL_THREADED_COMMENTS_PAGEHANDLER', 'threaded_comments');
 function izap_threaded_init() {
-  func_init_plugin_byizap(array('plugin' => array('name' => GLOBAL_THREADED_COMMENTS_PLUGIN)));
+  if(is_plugin_enabled('izap-elgg-bridge')){
+    func_init_plugin_byizap(array('plugin' => array('name' => GLOBAL_THREADED_COMMENTS_PLUGIN)));
+  }else{
+    register_error('This Plugin Needs Izap-Elgg-Bridge Plugin');
+    disable_plugin(GLOBAL_THREADED_COMMENTS_PLUGIN);
+  }
 }register_elgg_event_handler('init', 'system', 'izap_threaded_init');
