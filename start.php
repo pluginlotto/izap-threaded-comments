@@ -6,7 +6,7 @@
 ***************************************************
 * @author iZAP Team "<support@izap.in>"
 * @link http://www.izap.in/
-* @version 1.0
+* @version {version} $Revision: {revision}
 * Under this agreement, No one has rights to sell this script further.
 * For more information. Contact "Tarun Jangra<tarun@izap.in>"
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
@@ -14,6 +14,8 @@
 */
 define('GLOBAL_THREADED_COMMENTS_PLUGIN', 'izap-threaded-comments');
 define('GLOBAL_THREADED_COMMENTS_PAGEHANDLER', 'threaded_comments');
+define('GLOBAL_THREADED_COMMENTS_ACTIONHANDLER', 'threaded_comments');
+
 function izap_threaded_init() {
   if(is_plugin_enabled('izap-elgg-bridge')){
     func_init_plugin_byizap(array('plugin' => array('name' => GLOBAL_THREADED_COMMENTS_PLUGIN)));

@@ -6,12 +6,13 @@
 ***************************************************
 * @author iZAP Team "<support@izap.in>"
 * @link http://www.izap.in/
-* @version 1.0
+* @version {version} $Revision: {revision}
 * Under this agreement, No one has rights to sell this script further.
 * For more information. Contact "Tarun Jangra<tarun@izap.in>"
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
-*/
+ */
+
 $owner = get_user($vars['entity']->owner_guid); 
 $reply_url = func_set_href_byizap(array(
   'plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN,

@@ -15,9 +15,6 @@
 
 global $CONFIG;
 $qry_params = func_get_query_params_byizap();
-//$guid = get_input('guid');
-//$main = get_input('main');
-
 $guid = $qry_params[1];
 $main = $qry_params[2];
 

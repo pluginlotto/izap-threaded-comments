@@ -21,7 +21,7 @@ $validated = $CONFIG->post_byizap->form_validated;
 // check if from is validated
 if($validated) {
   $entity = new IzapThreadedComments($CONFIG->post_byizap->attributes['guid'], array('post'=>&$CONFIG->post_byizap));
-  if(func_user_can_post_byizap(func_get_custom_value_byizap(array('plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN, 'var' => 'minimum_comment_post_time'))) && $entity->save()) {
+  if($entity->save()) {
     $entity = new IzapThreadedComments($entity->guid);
 
     // send notification

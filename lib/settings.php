@@ -41,12 +41,12 @@ return array(
                 ),
 
                 'actions'=>array(
-                        'threaded_comments/save' => array('file' => 'save.php', 'public' => FALSE),
-                        'threaded_comments/delete' => array('file' => 'delete.php', 'public' => FALSE),
+                        GLOBAL_THREADED_COMMENTS_ACTIONHANDLER . '/save' => array('file' => 'save.php', 'public' => FALSE),
+                        GLOBAL_THREADED_COMMENTS_ACTIONHANDLER . '/delete' => array('file' => 'delete.php', 'public' => FALSE),
                 ),
 
                 'action_to_plugin_name' => array(
-                        'threaded_comments' => GLOBAL_THREADED_COMMENTS_PLUGIN,
+                        GLOBAL_THREADED_COMMENTS_ACTIONHANDLER => GLOBAL_THREADED_COMMENTS_PLUGIN,
                 ),
 
                 'events'=>array(
@@ -63,11 +63,6 @@ return array(
                         ),
 
                 ),
-
-                'custom'=>array(
-                        'minimum_comment_post_time' => 5,
-
-                ),
         ),
 
         'includes'=>array(
@@ -79,7 +74,7 @@ return array(
                 'www'=>array(
                         'page' => $CONFIG->wwwroot . 'pg/'.GLOBAL_THREADED_COMMENTS_PAGEHANDLER.'/',
                         'images' => $CONFIG->wwwroot . 'mod/'.GLOBAL_THREADED_COMMENTS_PLUGIN.'/_graphics/',
-                        'action' => $CONFIG->wwwroot . 'action/threaded_comments/',
+                        'action' => $CONFIG->wwwroot . 'action/'.GLOBAL_THREADED_COMMENTS_ACTIONHANDLER.'/',
                 ),
                 'dir'=>array(
                         'plugin'=>dirname(dirname(__FILE__))."/",
