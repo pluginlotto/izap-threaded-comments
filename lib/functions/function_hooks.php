@@ -43,3 +43,21 @@ function func_izap_threaded_comments_access_update ($event, $object_type, $objec
 function func_count_comments($hook, $entity_type, $ElggCommentCount, $params) {
   return $params['entity']->total_comments;
 }
+
+function func_delete_comments_event($event, $object_type, $object) {
+  $array = array(
+          'metadata_names' => 'main_entity',
+          'metadata_values' => $object->guid,
+  );
+
+  $comments = func_get_threaded_comments_byizap($array);
+  if($comments) {
+    func_hook_access_over_ride_byizap(array('status' => TRUE));
+    foreach($comments as $comment) {
+      $comment->delete();
+    }
+    func_hook_access_over_ride_byizap(array('status' => FALSE));
+  }
+
+  return TRUE;
+}

@@ -56,6 +56,12 @@ return array(
                                 ),
                         ),
 
+                        'delete' => array(
+                                'object' => array(
+                                        'func_delete_comments_event'
+                                ),
+                        ),
+
                 ),
 
                 'custom'=>array(
@@ -68,7 +74,7 @@ return array(
                 dirname(__FILE__) . '/functions' => array('functions_core.php', 'function_hooks.php'),
                 dirname(__FILE__) . '/classes' => array('IzapThreadedComments.php'),
         ),
-  
+
         'path'=>array(
                 'www'=>array(
                         'page' => $CONFIG->wwwroot . 'pg/'.GLOBAL_THREADED_COMMENTS_PAGEHANDLER.'/',
