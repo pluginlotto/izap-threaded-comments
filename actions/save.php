@@ -47,11 +47,6 @@ if($validated) {
     // end user saving
 
     // send notification
-    if($entity->owner_guid != get_loggedin_userid()) {
-      $subject = sprintf(elggb_echo('threaded_comment_notify_subject'), $main_entity->title);
-      $message = func_izap_bridge_view('home/notify_msg', array('plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN, 'entity' => $entity));
-      notify_user($main_entity->owner_guid, $CONFIG->site->guid, $subject, $message);
-    }
 
 
     if(is_array($main_entity->commented_emails) && sizeof($main_entity->commented_emails)) {
@@ -65,9 +60,6 @@ if($validated) {
         func_send_mail_byizap($send_array);
       }
     }
-    
-  }
-
     // notification end
 
     $html_output = elgg_view_entity($entity);
