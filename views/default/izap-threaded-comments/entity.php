@@ -25,8 +25,11 @@ $reply_url = func_set_href_byizap(array(
   <div class="comment-info-byizap" id="threaded_comment_description_<?php echo $vars['entity']->guid ;?>">
       <?php echo $vars['entity']->description; ?>
        - <a href="<?php echo $owner->getURL(); ?>"><?php echo $owner->name; ?></a> <?php echo friendly_time($vars['entity']->time_created); ?>
+       <?php if(isloggedin()) :?>
         <a href="#reply" id="threaded_comment_reply_<?php echo $vars['entity']->guid ;?>"><?php echo elggb_echo('reply');?></a>
-        | <a href="<?php echo $vars['entity']->getUrl();?>"><?php echo elggb_echo('link');?></a>
+        |
+       <?php endif;?>
+        <a href="<?php echo $vars['entity']->getUrl();?>"><?php echo elggb_echo('link');?></a>
         <?php
         if ($vars['entity']->canEdit()) :
           ?>
