@@ -15,9 +15,9 @@ gatekeeper();
 global $CONFIG;
 $error = FALSE;
 
-$validated = $CONFIG->post_byizap->form_validated;
+
 // check if from is validated
-if($validated) {
+if(!IzapBase::hasFormError()) {
 
   $posted_arr=IzapBase::getPostedAttributes();
   $main_entity = get_entity($posted_arr['main_entity']);
@@ -65,7 +65,7 @@ if($validated) {
     }
     // notification end
     $html_output = elgg_view_entity($entity);
-  }
+    }
   else {
     $error = TRUE;
   }

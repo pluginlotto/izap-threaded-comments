@@ -92,11 +92,3 @@ function func_get_threaded_comments_byizap ($provided) {
 
   return elgg_get_entities_from_metadata($working_array);
 }
-
-function func_update_subtype(){
-   if(get_subtype_id('object', GLOBAL_IZAP_THREADED_COMMENTS_SUBTYPE)) {
-    update_subtype('object', GLOBAL_IZAP_THREADED_COMMENTS_SUBTYPE, GLOBAL_IZAP_THREADED_COMMENTS_SUBTYPE);
-  }else{
-    add_subtype('object', GLOBAL_IZAP_THREADED_COMMENTS_SUBTYPE, GLOBAL_IZAP_THREADED_COMMENTS_SUBTYPE);
-  }
-}
