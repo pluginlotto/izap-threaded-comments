@@ -59,7 +59,7 @@ return array(
                 ),
 
                 'custom'=>array(
-                        'minimum_comment_post_time' => 10,
+                        'minimum_comment_post_time' => 5,
 
                 ),
         ),
