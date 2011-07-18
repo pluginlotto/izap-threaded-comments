@@ -24,12 +24,12 @@ $rss_url = IzapBase::setHref(array(
 
 ?>
 <div class="elgg-list" id="threadedcomments">
-  <div align="right">
+  <div ><span style="font-weight: bold;color:#0054A7"align="left"> Comments</span>
     <a
       href="<?php echo $rss_url?>"
       title="<?php echo elgg_echo('comments_rss')?>"><img
         src="<?php echo $vars['url'],'mod/'.GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN.'/_graphics/rss_comments.png';?>"
-          alt="<?php echo elgg_echo('comments_rss')?>"/></a>
+          alt="<?php echo elgg_echo('comments_rss')?>" align="right"/></a>
    
   </div>
   <?php

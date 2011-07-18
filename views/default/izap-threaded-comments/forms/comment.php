@@ -23,6 +23,7 @@ if($vars['div_placement'] == '') {
   echo elgg_view('input/hidden', array('internalname'=>"attributes[_main_entity]", 'value'=>$vars['main_entity_guid']) );
   echo elgg_view('input/hidden', array('internalname'=>"attributes[_access_id]", 'value'=>$vars['access_id']) );
   ?>
+
   <p>
     <textarea name="attributes[_description]" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>_textarea" style="height: 50px;"></textarea>
   </p>
