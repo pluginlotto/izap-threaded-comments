@@ -16,7 +16,7 @@
 class IzapThreadedComments extends IzapObject {
 
   protected function initialise_attributes() {
-    parent::initialise_attributes();
+    parent::initializeAttributes();
   }
 
   public function __construct($guid = null) {

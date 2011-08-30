@@ -19,9 +19,9 @@ if($vars['div_placement'] == '') {
 }?>
 <form action="<?php echo IzapBase::getFormAction('save', GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN)?>" method="post" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>">
   <?php
-  echo elgg_view('input/hidden', array('internalname'=>"attributes[_parent_guid]", 'value'=>$vars['parent_guid']) );
-  echo elgg_view('input/hidden', array('internalname'=>"attributes[_main_entity]", 'value'=>$vars['main_entity_guid']) );
-  echo elgg_view('input/hidden', array('internalname'=>"attributes[_access_id]", 'value'=>$vars['access_id']) );
+  echo elgg_view('input/hidden', array('name'=>"attributes[_parent_guid]", 'value'=>$vars['parent_guid']) );
+  echo elgg_view('input/hidden', array('name'=>"attributes[_main_entity]", 'value'=>$vars['main_entity_guid']) );
+  echo elgg_view('input/hidden', array('name'=>"attributes[_access_id]", 'value'=>$vars['access_id']) );
   ?>
 
   <p>
@@ -31,7 +31,7 @@ if($vars['div_placement'] == '') {
    $posting_icon = '<div id="form_posting"><img src="'.$vars['url'].'mod/'.GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN.'/_graphics/ajax-loader.gif"></div>';
     //echo $vars['url'].'mod/'.GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN.'/_graphics/ajax-loader.gif';
   echo elgg_view('input/submit',array(
-  'internalname'=>'submit',
+  'name'=>'submit',
   'value'=>'Submit'
   ));
   if($vars['close_button']):

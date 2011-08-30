@@ -36,7 +36,7 @@ $rss_url = IzapBase::setHref(array(
   echo $vars['isForm'] ? "" : elgg_view('output/threaded_comments', array('entity'=>$vars['entity']) );
   ?>
   <?php
-  if(isloggedin()) {
+  if(elgg_is_logged_in()) {
     echo elgg_view(GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN . '/forms/comment', array(
     'plugin' => GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN,
     'parent_guid'=> $vars['entity']->guid,

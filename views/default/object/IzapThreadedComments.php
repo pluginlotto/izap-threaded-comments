@@ -26,8 +26,8 @@ $reply_url = IzapBase::setHref(array(
 <div class="threadedComment" id="threaded_comment_<?php echo $vars['entity']->guid ;?>">
   <div class="comment-info-byizap" id="threaded_comment_description_<?php echo $vars['entity']->guid ;?>">
       <?php echo $vars['entity']->getDescription(); ?>
-       <a href="<?php echo $owner->getURL(); ?>"><?php echo $owner->name; ?></a> <?php echo friendly_time($vars['entity']->time_created); ?>
-       <?php if(isloggedin()) :?>
+       <a href="<?php echo $owner->getURL(); ?>"><?php echo $owner->name; ?></a> <?php echo elgg_view_friendly_time($vars['entity']->time_created); ?>
+       <?php if(elgg_is_logged_in()) :?>
         <a href="#reply" id="threaded_comment_reply_<?php echo $vars['entity']->guid ;?>"><?php echo elgg_echo('reply');?></a>
         |
        <?php endif;?>
