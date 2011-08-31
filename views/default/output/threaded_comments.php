@@ -32,6 +32,16 @@ if($count) {
 }
 
   echo elgg_view_entity_list($entities, $count, 0, 999, TRUE, FALSE, FALSE);
+  
+  echo elgg_view('page/components/list', array(
+    'items' => $entities,
+    'offset' => 0,
+    'limit' => 999,
+    'full_view' => TRUE,
+    'list_type_toggle' => FALSE,
+    'pagination' => FALSE
+        ) );
+
   //echo list_entities_from_metadata("parent_guid", $vars['entity']->guid, "object", "IzapThreadedComments", 0, 9999, TRUE, FALSE, FALSE);
 // todo: replace "IzapThreadedComments" with getSubtype function of entity. ?>
 </div>
