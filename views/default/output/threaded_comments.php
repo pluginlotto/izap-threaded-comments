@@ -31,8 +31,7 @@ if($count) {
   $entities = elgg_get_entities_from_metadata($options);
 }
 
-  echo elgg_view_entity_list($entities, $count, 0, 999, TRUE, FALSE, FALSE);
-  
+   
   echo elgg_view('page/components/list', array(
     'items' => $entities,
     'offset' => 0,
