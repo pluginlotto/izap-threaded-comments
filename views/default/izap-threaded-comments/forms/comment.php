@@ -11,22 +11,21 @@
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
-
 if($vars['div_placement'] == '') {
   $append_prepend = 'prepend';
 }else {
   $append_prepend = $vars['div_placement'];
 }?>
-<form action="<?php echo IzapBase::getFormAction('save', GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN)?>" method="post" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>">
+
+<form action="<?php echo IzapBase::getFormAction('save', GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN)?>" method="post" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>" style="height:70px">
   <?php
   echo elgg_view('input/hidden', array('name'=>"attributes[_parent_guid]", 'value'=>$vars['parent_guid']) );
   echo elgg_view('input/hidden', array('name'=>"attributes[_main_entity]", 'value'=>$vars['main_entity_guid']) );
   echo elgg_view('input/hidden', array('name'=>"attributes[_access_id]", 'value'=>$vars['access_id']) );
   ?>
+  <fieldset>
+    <textarea name="attributes[_description]" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>_textarea" style="height: 40px;"></textarea>
 
-  <p>
-    <textarea name="attributes[_description]" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>_textarea" style="height: 50px;"></textarea>
-  </p>
   <?php
    $posting_icon = '<div id="form_posting"><img src="'.$vars['url'].'mod/'.GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN.'/_graphics/ajax-loader.gif"></div>';
     //echo $vars['url'].'mod/'.GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN.'/_graphics/ajax-loader.gif';
@@ -34,6 +33,8 @@ if($vars['div_placement'] == '') {
   'name'=>'submit',
   'value'=>'Submit'
   ));
+  ?>
+  </fieldset><?php
   if($vars['close_button']):
     ?>
     <a href="#" onclick="$('#reply_form_<?php echo $vars['parent_guid']?>').remove(); return false;"><?php echo elgg_echo('close');?></a>
@@ -45,7 +46,7 @@ if($vars['div_placement'] == '') {
       elgg.action(this.action, {
         data: $(this).serialize(),
         success: function(data){
-           
+
           $('#form_threaded_comment_<?php echo $vars['parent_guid'];?>_textarea').val('');
           $('#form_posting').remove();
           $('#reply_form_<?php echo $vars['parent_guid']?>').remove();

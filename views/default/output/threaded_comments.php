@@ -41,6 +41,5 @@ if($count) {
     'pagination' => FALSE
         ) );
 
-  //echo list_entities_from_metadata("parent_guid", $vars['entity']->guid, "object", "IzapThreadedComments", 0, 9999, TRUE, FALSE, FALSE);
-// todo: replace "IzapThreadedComments" with getSubtype function of entity. ?>
+   ?>
 </div>

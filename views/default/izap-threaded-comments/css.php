@@ -36,6 +36,9 @@
 .threadedComment {
   padding:5px 0px 0px 10px; font-size:12px;
 }
+.river-thread{
+height:100px;
+border:1px solid #000;
 
 /* end Threaded comments css */
 
