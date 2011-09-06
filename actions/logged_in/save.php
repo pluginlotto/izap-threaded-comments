@@ -21,8 +21,9 @@ if(!IzapBase::hasFormError()) {
   $posted_arr=IzapBase::getPostedAttributes();
   $main_entity = get_entity($posted_arr['main_entity']);
   $entity = new IzapThreadedComments($posted_arr['guid']);
-  $entity->access_id =$main_entity->access_id;
   $entity->setAttributes();
+  $entity->access_id =$main_entity->access_id;
+  
   
   if($entity->save()) {
     $entity = new IzapThreadedComments($entity->guid);

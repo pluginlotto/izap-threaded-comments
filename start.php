@@ -22,8 +22,9 @@ elgg_register_event_handler('init', 'system','func_izap_threaded_comment_init');
 function func_izap_threaded_comment_init() {
 
   izap_plugin_init(GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN);
-  register_plugin_hook('comments', 'object', 'func_replace_comments');
-  register_plugin_hook('comments:count', 'object', 'func_count_comments');
+  elgg_register_plugin_hook_handler('comments', 'object', 'func_replace_comments');
+  elgg_register_plugin_hook_handler('comments:count', 'object', 'func_count_comments');
+  elgg_register_plugin_hook_handler('register', 'menu:river', 'izap_river_menu_setup');
   elgg_register_event_handler('update', 'object', 'func_izap_threaded_comments_access_update');
   elgg_register_event_handler('delete', 'object', 'func_delete_comments_event');
   elgg_register_page_handler(GLOBAL_IZAP_THREADED_COMMENTS_PAGEHANDLER, GLOBAL_IZAP_PAGEHANDLER);
@@ -36,6 +37,32 @@ function func_replace_comments($hook, $entity_type, $ElggComments, $params) {
           'paging' => 'off',
           'limit' => 200,
   ));
+}
+/**
+ * Add the threaded-comments to river actions menu
+ */
+function izap_river_menu_setup($hook, $type, $return, $params){
+  	if (elgg_is_logged_in()) {
+		$item = $params['item'];
+		$object = $item->getObjectEntity();
+		// comments and non-objects cannot be commented on or liked
+		if (!elgg_in_context('widgets') && $item->annotation_id == 0) {
+			// comments
+			if ($object->canComment()) {
+				$options = array(
+					'name' => 'comment',
+					'href' => '#threaded-comment-'.$object->guid, 
+					'text' => elgg_view_icon('speech-bubble'),
+					'title' => elgg_echo('comment:this'),
+					'rel' => 'toggle',
+					'priority' => 50,
+				);
+				$return[] = ElggMenuItem::factory($options);
+			}
+		}
+	}
+
+	return $return;
 }
 
 function func_izap_threaded_comments_access_update ($event, $object_type, $object) {

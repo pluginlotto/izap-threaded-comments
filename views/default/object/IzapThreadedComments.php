@@ -12,7 +12,7 @@
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
-
+$loader = '<img src="'.$vars['url'].'mod/'.GLOBAL_IZAP_ELGG_BRIDGE.'/_graphics/queue.gif" id ="loadchild"/>';
 ?>
 <a name="comment_<?php echo $vars['entity']->guid?>"></a>
 <?php
@@ -22,10 +22,20 @@ $reply_url = IzapBase::setHref(array(
   'context' => 'ajax',
   'vars' => array('view', GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN, 'js', 'load_reply_form'),
 )) . '?guid=' . $vars['entity']->guid . '&main=' . $vars['entity']->main_entity;
+ $child = $vars['entity']->countChild();
 ?>
 <div class="threadedComment" id="threaded_comment_<?php echo $vars['entity']->guid ;?>">
   <div class="comment-info-byizap" id="threaded_comment_description_<?php echo $vars['entity']->guid ;?>">
-      <?php echo $vars['entity']->getDescription(); ?>
+    <div class="loadchild">
+      <?php if($vars['river_thread'] && $child && !(get_entity($vars['entity']->parent_guid) instanceof IzapThreadedComments)){
+ echo elgg_view('output/url',array('href' => IzapBase::setHref(array('context' => GLOBAL_IZAP_THREADED_COMMENTS_PAGEHANDLER,'action' =>'loadchild','vars' => array($vars['entity']->guid))),'text' =>elgg_echo('izap-threaded-comments:viewfull'),'js' =>'id="loadchild_'.$vars['entity']->guid.'"'));
+ }?>
+    </div><div class="clearfloat"></div>
+    <div style="float:left"><?php
+       echo $vars['entity']->getDescription();
+     
+      ?></div><div class="clearfloat"></div>
+    
        <a href="<?php echo $owner->getURL(); ?>"><?php echo $owner->name; ?></a> <?php echo elgg_view_friendly_time($vars['entity']->time_created); ?>
        <?php if(elgg_is_logged_in()) :?>
         <a href="#reply" id="threaded_comment_reply_<?php echo $vars['entity']->guid ;?>"><?php echo elgg_echo('reply');?></a>
@@ -43,17 +53,23 @@ $reply_url = IzapBase::setHref(array(
           <?php echo elgg_echo('delete');?>
         </a>
           <?php
-        endif; ?>
-        <div style="float: right"><?php echo elgg_view('profile/icon', array('size' => 'tiny', 'entity' => $owner));?></div>
+        endif;
+          ?>
+        <div style="float: right">
+        <?php echo elgg_view('icon/user/default', array('size' => 'tiny', 'entity' => $owner));?>
+        </div>
   </div>
 
   <div class="clearfloat"></div>
   <div id="threaded_comment_form_<?php echo $vars['entity']->guid;?>"></div>
   <div id="threaded_comment_form_reply_<?php echo $vars['entity']->guid;?>"></div>
   <?php
-  $child = $vars['entity']->countChild();
-  echo ($child) ? elgg_view('output/threaded_comments', array('entity'=>$vars['entity'], 'paging' => 'off') ) : "";
-  ?>
+  if($vars['river_thread'] && $child && (get_entity($vars['entity']->parent_guid) instanceof IzapThreadedComments)){
+  echo elgg_view('output/threaded_comments_river', array('entity'=>$vars['entity'], 'paging' => 'off')) ;
+   }elseif(!$vars['river_thread'] && $child){
+     echo elgg_view('output/threaded_comments', array('entity'=>$vars['entity'], 'paging' => 'off')) ;
+   }?>
+   
 </div>
 <script type="text/javascript">
   $('#threaded_comment_reply_<?php echo $vars['entity']->guid ;?>').live('click', function(){
@@ -78,5 +94,11 @@ $reply_url = IzapBase::setHref(array(
   if(comment_id == 'comment_<?php echo $vars['entity']->guid?>') {
     $('#threaded_comment_description_<?php echo $vars['entity']->guid ;?>').effect("highlight", {color: "#FFC351"}, 5000);
   }
+  });
+  
+  $('#loadchild_<?php echo $vars['entity']->guid ;?>').click(function(){
+  $('#loadchild_<?php echo $vars['entity']->guid ;?>').remove();
+  $('#threaded_comment_form_<?php echo $vars['entity']->guid;?>').html('<?php echo $loader?>').load(this.href);
+  return false;
   });
 </script>

@@ -14,7 +14,9 @@
 
 ?>
 /* Threaded comments css */
-.threaded_comments{margin-left:5px;}
+.threaded_comments {
+margin-left:5px;
+}
 .threaded_comments_error{
   background-color: #F8A3A3;
   font-weight: bold;
@@ -32,27 +34,22 @@
   color: #636363;
   padding-left: 10px;
 }
+ 
 
 .threadedComment {
   padding:5px 0px 0px 10px; font-size:12px;
-}
+  }
+
 .river-thread{
 height:100px;
 border:1px solid #000;
-
-/* end Threaded comments css */
-
-.izap_river_icon {
-margin-right: 10px;
 }
-
-#threadedcomments {
-border: none;
+#threaded_comments > .elgg-list > li {
+ border:none;
+ }
+#threaded_comments > .elgg-list {
+border:none;
 }
-
-#threadedcomments .elgg-list > li {
-	border-bottom: none;
-}
-#threadedcomments .elgg-list{
-border-top:none;
-}
+ .loadchild {
+ float:right;
+ }

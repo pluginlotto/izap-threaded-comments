@@ -13,14 +13,11 @@
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
 
-?>
-<div id="threaded_comments">
-<?php
 $options = array(
   'metadata_names' => 'parent_guid',
   'metadata_values' => $vars['entity']->guid,
   'type' => 'object',
-  'subtype' => 'IzapThreadedComments',
+  'subtype' => GLOBAL_IZAP_THREADED_COMMENTS_SUBTYPE,
   'order_by' =>	'e.time_created asc',
   'count' => TRUE,
   'limit' => 999,
@@ -31,8 +28,12 @@ if($count) {
   $entities = elgg_get_entities_from_metadata($options);
 }
 
-   
-  echo elgg_view('page/components/list', array(
+?>
+<div id="threaded_comments">
+<?php
+
+
+     echo elgg_view('page/components/list', array(
     'items' => $entities,
     'offset' => 0,
     'limit' => 999,

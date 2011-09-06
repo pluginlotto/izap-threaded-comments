@@ -41,4 +41,8 @@ class IzapThreadedcommentsController extends IzapController {
     $this->page_elements['content'] = $entities;
     $this->drawPage();
   }
+  function actionloadchild(){
+ 
+  ECHO elgg_view('output/threaded_comments',array('entity' => get_entity($this->url_vars[2])));
+  }
 }

@@ -23,7 +23,7 @@ $main_entity = get_entity($main);
 ?>
 <div id="reply_form_<?php echo $guid?>" class="izap_r_class">
   <?php
-  echo elgg_view(GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN . '/forms/comment', array(
+  echo elgg_view('forms/comments/add', array(
   'plugin' => GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN,
   'parent_guid'=>$entity->guid,
   'main_entity_guid' => $main_entity->guid,

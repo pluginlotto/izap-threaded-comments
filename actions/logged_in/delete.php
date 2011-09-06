@@ -16,6 +16,7 @@
 gatekeeper();
 $guid  = get_input('guid');
 $izapThreadedComments = get_entity($guid);
+$id ="#threaded_comment_".$guid;
 $html_output = '<div id="fade_out_comment_text">';
 if($izapThreadedComments instanceof IzapThreadedComments && $izapThreadedComments->canEdit() && $izapThreadedComments->delete()) {
   $html_output .= '
@@ -34,7 +35,10 @@ $html_output .= '
   <script type="text/javascript">
   $("#fade_out_comment_text").fadeOut(1000, function(){
     $("#fade_out_comment_text").remove();
-  });
+    $("'.$id.'").parents().css("border","none");
+      $("'.$id.'").remove();
+    });
+    
   </script>
   <div>';
 echo $html_output;

@@ -33,11 +33,12 @@ $rss_url = IzapBase::setHref(array(
    
   </div>
   <?php
+ 
   echo $vars['isForm'] ? "" : elgg_view('output/threaded_comments', array('entity'=>$vars['entity']) );
-  ?>
+   ?>
   <?php
   if(elgg_is_logged_in()) {
-    echo elgg_view(GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN . '/forms/comment', array(
+    echo elgg_view('forms/comments/add', array(
     'plugin' => GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN,
     'parent_guid'=> $vars['entity']->guid,
     'access_id' => $vars['entity']->access_id,

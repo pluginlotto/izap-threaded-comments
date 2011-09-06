@@ -38,7 +38,7 @@ class IzapThreadedComments extends IzapObject {
     $main_entity = get_entity($this->_post->attributes['main_entity']);
     $this->title = $main_entity->title;
     $this->access_id = $main_entity->access_id;
-    if(parent::save()) {
+    if(parent::save(true,array('river' =>false))) {
       IzapBase::getAllAccess();
       $main_entity->total_comments = (int) $main_entity->total_comments + 1;
       IzapBase::removeAccess();
