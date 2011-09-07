@@ -17,7 +17,7 @@ $options = array(
     'metadata_values' => $vars['entity']->guid,
     'type' => 'object',
     'subtype' => 'IzapThreadedComments',
-    'order_by' => 'e.time_created asc',
+    'order_by' => 'e.time_created desc',
     'count' => TRUE,
     'limit' => 3,
 );

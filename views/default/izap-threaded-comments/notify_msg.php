@@ -18,12 +18,9 @@ $comment = $vars['entity'];
 $main_entity = get_entity($comment->main_entity);
 ?>
 
-  <?php echo elgg_echo('izap-elgg-bridge:new_comment');?>
-  at <a href="<?php echo $comment->getURL();?>" >
-    <?php echo $main_entity->title?>
-  </a>
-  <p>
+  <?php echo elgg_echo('izap-threaded-comment:new_comment');?>
+  at <?php echo $main_entity->title?>
+   &quot;
+    <?php echo $comment->getDescription();?>
     &quot;
-    <?php echo $comment->description;?>
-    &quot;
-  </p>
+  <?php echo elgg_echo('izap-threaded-comment:clickhere');echo $comment->getURL();?>"

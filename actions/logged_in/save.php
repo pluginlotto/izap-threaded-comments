@@ -53,14 +53,15 @@ if(!IzapBase::hasFormError()) {
 
 
     if(is_array($main_entity->commented_emails) && sizeof($main_entity->commented_emails)) {
-      $email_ids = $main_entity->commented_emails;
+      $email_ids = $main_entity->commented_users;
       foreach($email_ids as $email) {
-        $send_array['subject'] = sprintf(elgg_echo('threaded_comment_notify_subject'), $main_entity->title);
+        $send_array['subject'] = elgg_echo('izap-threaded-comment:threaded_comment_notify_subject', array($main_entity->title));
         $send_array['to'] = $email;
         $send_array['from_username'] = $CONFIG->site->name;
-        $send_array['from'] = $CONFIG->site->email;
+        $send_array['from'] = $CONFIG->site->guid;
         $send_array['msg'] = elgg_view(GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN. '/notify_msg', array('entity' => $entity));
-        IzapBase::sendMail($send_array);
+//        IzapBase::sendMail($send_array);
+         notify_user($send_array['to'], $send_array['from'], $send_array['subject'], $send_array['msg']);
       }
     }
     // notification end
