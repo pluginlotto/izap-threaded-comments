@@ -12,7 +12,6 @@
  * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
  * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
-
 $options = array(
     'metadata_names' => 'parent_guid',
     'metadata_values' => $vars['entity']->guid,

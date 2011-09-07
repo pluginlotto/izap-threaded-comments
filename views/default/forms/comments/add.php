@@ -11,6 +11,8 @@
 * For discussion about corresponding plugins, visit http://www.pluginlotto.com/forums/
 * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
+
+$unique_id = uniqid();
 if($vars['div_placement'] == '') {
   $append_prepend = 'prepend';
 }else {
@@ -18,14 +20,14 @@ if($vars['div_placement'] == '') {
 }
 ?>
 
-<form action="<?php echo IzapBase::getFormAction('save', GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN)?>" method="post" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>" style="height:70px">
+<form action="<?php echo IzapBase::getFormAction('save', GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN)?>" method="post" id="form_threaded_comment_<?php echo $unique_id;?>" style="height:70px">
   <?php
   echo elgg_view('input/hidden', array('name'=>"attributes[_parent_guid]", 'value'=>$vars['parent_guid']) );
   echo elgg_view('input/hidden', array('name'=>"attributes[_main_entity]", 'value'=>$vars['main_entity_guid']) );
   echo elgg_view('input/hidden', array('name'=>"attributes[_access_id]", 'value'=>$vars['access_id']) );
   ?>
   <fieldset>
-    <textarea name="attributes[_description]" id="form_threaded_comment_<?php echo $vars['parent_guid'];?>_textarea" style="height: 40px;"></textarea>
+    <textarea name="attributes[_description]" id="form_threaded_comment_<?php echo $unique_id;?>_textarea" style="height: 40px;"></textarea>
 
   <?php
    $posting_icon = '<div id="form_posting"><img src="'.$vars['url'].'mod/'.GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN.'/_graphics/ajax-loader.gif"></div>';
@@ -43,12 +45,12 @@ if($vars['div_placement'] == '') {
     <?php endif;?>
 </fieldset>
   <script type="text/javascript">
-    $("#form_threaded_comment_<?php echo $vars['parent_guid'];?>").submit(function(){
+    $("#form_threaded_comment_<?php echo $unique_id;?>").submit(function(){
       $('#<?php echo $vars['resultId'] ?>').<?php echo $append_prepend?>('<?php echo $posting_icon?>');
       elgg.action(this.action, {
         data: $(this).serialize(),
         success: function(data){
-          $('#form_threaded_comment_<?php echo $vars['parent_guid'];?>_textarea').val('');
+          $('#form_threaded_comment_<?php echo $unique_id;?>_textarea').val('');
           $('#reply_form_<?php echo $vars['parent_guid']?>').remove();
           $('#<?php echo $vars['resultId'] ?>').<?php echo $append_prepend?>(data.output);
           $('#form_posting').remove();

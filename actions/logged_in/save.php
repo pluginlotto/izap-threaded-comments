@@ -22,7 +22,7 @@ if(!IzapBase::hasFormError()) {
   $main_entity = get_entity($posted_arr['main_entity']);
   $entity = new IzapThreadedComments($posted_arr['guid']);
   $entity->setAttributes();
-  $entity->access_id =$main_entity->access_id;
+  $entity->access_id =ACCESS_PUBLIC;
   
   
   if($entity->save()) {
@@ -59,8 +59,8 @@ if(!IzapBase::hasFormError()) {
         $send_array['to'] = $email;
         $send_array['from_username'] = $CONFIG->site->name;
         $send_array['from'] = $CONFIG->site->email;
-        $send_array['msg'] = func_izap_bridge_view('home/notify_msg', array('plugin' => GLOBAL_THREADED_COMMENTS_PLUGIN, 'entity' => $entity));
-        //func_send_mail_byizap($send_array);
+        $send_array['msg'] = elgg_view(GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN. '/notify_msg', array('entity' => $entity));
+        IzapBase::sendMail($send_array);
       }
     }
     // notification end
