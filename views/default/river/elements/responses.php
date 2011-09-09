@@ -14,9 +14,9 @@
  */
 $item = $vars['item'];
 $object = $item->getObjectEntity();
-
 ?>
-<div  id="threaded-comment-<?php echo $object->getGUID()?>" class="hidden">
+
+<!--<div  id="threaded-comment-<?php //echo $object->getGUID()?>">-->
 <?php
 if (!elgg_in_context('widgets')) {
   echo elgg_view('input/threaded_comments_river', array(
@@ -27,7 +27,4 @@ if (!elgg_in_context('widgets')) {
   );
 }
 ?>
-</div>
-<script type="text/javascript">
-
-</script>
+<!--</div>-->

@@ -19,6 +19,7 @@ $error = FALSE;
 if(!IzapBase::hasFormError()) {
 
   $posted_arr=IzapBase::getPostedAttributes();
+
   $main_entity = get_entity($posted_arr['main_entity']);
   $entity = new IzapThreadedComments($posted_arr['guid']);
   $entity->setAttributes();
@@ -65,7 +66,10 @@ if(!IzapBase::hasFormError()) {
       }
     }
     // notification end
-    $html_output = elgg_view_entity($entity);
+    if($posted_arr['river']==true)
+    $html_output = elgg_view_entity($entity,array('river_thread' => true));
+    else
+      $html_output = elgg_view_entity($entity);
     }
   else {
     $error = TRUE;

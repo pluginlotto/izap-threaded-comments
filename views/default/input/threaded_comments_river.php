@@ -12,7 +12,6 @@
  * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
 ?>
-<div class="clearfloat"></div>
 <?php
 $main_entity_guid = ($vars['main_entity']->guid > 0) ? $vars['main_entity']->guid : $vars['entity']->guid;
 $rss_url = IzapBase::setHref(array(
@@ -20,15 +19,14 @@ $rss_url = IzapBase::setHref(array(
             'action' => 'rss',
         )) . $main_entity_guid;
 ?>
-<div class="elgg-list" id="threadedcomments">
-  <div><span style="font-weight: bold;color:#0054A7"align="left"> Comments</span>
-  </div>
+<!--<div class="elgg-list" id="threadedcomments">-->
+  
 <?php
 echo $vars['isForm'] ? "" : elgg_view('output/threaded_comments_river', array('entity' => $vars['entity']));
 ?>
   <?php
   if (elgg_is_logged_in ()) {
-    echo elgg_view('forms/comments/add', array(
+    echo elgg_view('forms/comments/add_river', array(
         'plugin' => GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN,
         'parent_guid' => $vars['entity']->guid,
         'access_id' => $vars['entity']->access_id,
@@ -40,4 +38,4 @@ echo $vars['isForm'] ? "" : elgg_view('output/threaded_comments_river', array('e
     );
   }
   ?>
-</div>
+<!--</div>-->

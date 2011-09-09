@@ -12,6 +12,7 @@
  * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
  * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
+
 $options = array(
     'metadata_names' => 'parent_guid',
     'metadata_values' => $vars['entity']->guid,
@@ -26,7 +27,11 @@ if ($count) {
   $options['count'] = FALSE;
   $entities = elgg_get_entities_from_metadata($options);
 }
-?>
+if($entities):
+krsort($entities);
+  ?>
+<span class="elgg-river-comments-tab"><?php echo elgg_echo('comments'); ?></span>
+<?php  endif;?>
 <div id="threaded_comments">
   <?php
   echo elgg_view('page/components/list', array(
@@ -36,6 +41,7 @@ if ($count) {
       'full_view' => TRUE,
       'list_type_toggle' => FALSE,
       'pagination' => FALSE,
+      'list_class' => ' elgg-annotation-list elgg-river-comments ',
       'river_thread' => TRUE
           ));
   ?>

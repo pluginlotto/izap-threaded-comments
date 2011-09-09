@@ -51,7 +51,7 @@ function izap_river_menu_setup($hook, $type, $return, $params){
 			if ($object->canComment()) {
 				$options = array(
 					'name' => 'comment',
-					'href' => '#threaded-comment-'.$object->guid, 
+					'href' => '#form_threaded_comment_'.$object->guid,
 					'text' => elgg_view_icon('speech-bubble'),
 					'title' => elgg_echo('comment:this'),
 					'rel' => 'toggle',

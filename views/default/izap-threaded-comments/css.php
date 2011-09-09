@@ -53,3 +53,20 @@ border:none;
  .loadchild {
  float:right;
  }
+
+ .izap-thread {
+
+  
+ }
+ .threadedComment_river{
+ background-color:#EEEEEE;
+  border-bottom-color:initial;
+  border-bottom-style:none;
+  border-bottom-width:initial;
+  margin-bottom:2px;
+  padding-bottom:8px;
+  padding-left:4px;
+  padding-right:4px;
+  padding-top:4px;
+  padding:5px 0px 0px 10px; font-size:12px;
+ }

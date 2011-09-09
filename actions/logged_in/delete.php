@@ -37,6 +37,7 @@ $html_output .= '
     $("#fade_out_comment_text").remove();
     $("'.$id.'").parents().css("border","none");
       $("'.$id.'").remove();
+        $("#elgg-object-'.$guid.'").remove();
     });
     
   </script>
