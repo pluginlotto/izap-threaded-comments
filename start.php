@@ -28,7 +28,7 @@ function func_izap_threaded_comment_init() {
 //  elgg_register_event_handler('update', 'object', 'func_izap_threaded_comments_access_update');
   elgg_register_event_handler('delete', 'object', 'func_delete_comments_event');
   elgg_register_page_handler(GLOBAL_IZAP_THREADED_COMMENTS_PAGEHANDLER, GLOBAL_IZAP_PAGEHANDLER);
-  
+  elgg_register_entity_type('object', 'IzapThreadedComments');
  }
 
 function func_replace_comments($hook, $entity_type, $ElggComments, $params) {
