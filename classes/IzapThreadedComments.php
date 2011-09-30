@@ -41,6 +41,7 @@ class IzapThreadedComments extends IzapObject {
     if(parent::save(true,array('river' =>false))) {
       IzapBase::getAllAccess();
       $main_entity->total_comments = (int) $main_entity->total_comments + 1;
+      $this->setLevel();
       IzapBase::removeAccess();
       return TRUE;
     }
@@ -112,7 +113,55 @@ class IzapThreadedComments extends IzapObject {
     return parent::getUrl();
   }
 
+  public function setLevel(){
+    $parent = get_entity($this->parent_guid);
+   if(!$parent instanceof IzapThreadedComments){
+     $this->level = 0;
+   } else{
+     $this->level = $parent->level+1;
+   }
+  }
+  public function getLevel(){
+    return (int)$this->level;
+  }
+  public function getFirstChild(){
+    if(!get_entity($this->parent_guid) instanceof IzapThreadedComments){
+      $options = array(
+      'type' => 'object',
+      'subtype' => 'IzapThreadedComments',
+      'metadata_names' => "parent_guid",
+      'metadata_values' => $this->guid,
+          'limit' => 1,
+        'order_by' => 'e.time_created asc'
+  );
+      $child = elgg_get_entities_from_metadata($options);
+      return (int)$child[0]->guid;
+    }
+    return false;
+      }
+
 }
+
+function get_all_children($parent_guid) {
+  $options = array(
+      'type' => 'object',
+      'subtype' => 'IzapThreadedComments',
+      'metadata_names' => "parent_guid",
+      'metadata_values' => $parent_guid,
+  );
+  $entity_array = elgg_get_entities_from_metadata($options);
+  if ($entity_array) {
+    foreach ($entity_array as $entity) {
+      $return_array += 1;
+      if ($entity->countChild()) {
+        $return_array += get_all_children($entity->guid);
+      }
+    }
+  }
+
+  return $return_array;
+}
+
 
 function get_child_recursive($parent_guid) {
   $options = array(

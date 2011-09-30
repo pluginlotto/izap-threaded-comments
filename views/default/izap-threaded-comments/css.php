@@ -55,8 +55,7 @@ border:none;
  }
 
  .izap-thread {
-
-  
+ 
  }
  .threadedComment_river{
  background-color:#EEEEEE;
@@ -70,3 +69,5 @@ border:none;
   padding-top:4px;
   padding:5px 0px 0px 10px; font-size:12px;
  }
+
+ 

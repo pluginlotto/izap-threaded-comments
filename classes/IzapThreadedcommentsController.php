@@ -43,6 +43,6 @@ class IzapThreadedcommentsController extends IzapController {
   }
   function actionloadchild(){
  
-  ECHO elgg_view('output/threaded_comments',array('entity' => get_entity($this->url_vars[2])));
+  echo elgg_view('output/threaded_comments',array('entity' => get_entity($this->url_vars[2])));
   }
 }

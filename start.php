@@ -16,7 +16,7 @@
 define('GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN','izap-threaded-comments');
 define('GLOBAL_IZAP_THREADED_COMMENTS_SUBTYPE','IzapThreadedComments');
 define('GLOBAL_IZAP_THREADED_COMMENTS_PAGEHANDLER','threadedcomments');
-
+if (elgg_is_active_plugin(GLOBAL_IZAP_ELGG_BRIDGE))
 elgg_register_event_handler('init', 'system','func_izap_threaded_comment_init');
 
 function func_izap_threaded_comment_init() {
