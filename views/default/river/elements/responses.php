@@ -1,5 +1,4 @@
 <?php
-
 /* * *************************************************
  * PluginLotto.com                                 *
  * Copyrights (c) 2005-2011. iZAP                  *
@@ -12,11 +11,14 @@
  * For discussion about corresponding plugins, visit http://www.pluginlotto.com/forum/
  * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
+
+//add reply under a reply
+
 $item = $vars['item'];
 $object = $item->getObjectEntity();
 ?>
 
-<!--<div  id="threaded-comment-<?php //echo $object->getGUID()?>">-->
+<!--<div  id="threaded-comment-<?php //echo $object->getGUID()   ?>">-->
 <?php
 if (!elgg_in_context('widgets')) {
   echo elgg_view('input/threaded_comments_river', array(

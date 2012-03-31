@@ -28,6 +28,7 @@ $hidden = $vars['reply']== true?'':'class="hidden"';
   echo elgg_view('input/hidden', array('name'=>"attributes[_main_entity]", 'value'=>$vars['main_entity_guid']) );
   echo elgg_view('input/hidden', array('name'=>"attributes[_access_id]", 'value'=>$vars['access_id']) );
   echo elgg_view('input/hidden',array('name' => "attributes[river]",'value' => 'true'));
+  echo elgg_view('input/securitytoken');
   ?>
   <fieldset>
     <input type="text" name="attributes[_description]" id="form_threaded_comment_<?php echo $unique_id;?>_textarea" style="height: 40px;"/>
@@ -36,7 +37,7 @@ $hidden = $vars['reply']== true?'':'class="hidden"';
    $posting_icon = '<div id="form_posting"><img src="'.$vars['url'].'mod/'.GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN.'/_graphics/ajax-loader.gif"></div>';
     echo elgg_view('input/submit',array(
   'name'=>'submit',
-  'value'=>'Submit'
+  'value' => (($vars['close_button']) ? 'Reply' : 'Submit')
   ));
   ?>
   <?php

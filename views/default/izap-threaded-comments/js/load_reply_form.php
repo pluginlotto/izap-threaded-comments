@@ -14,7 +14,6 @@
  */
 
 global $CONFIG;
-
 $guid = get_input('guid');
 $main = get_input('main');
 $entity = new IzapThreadedComments($guid);
@@ -22,7 +21,7 @@ $main_entity = get_entity($main);
 ?>
 <div id="reply_form_<?php echo $guid ?>" class="izap_r_class">
   <?php
-  if (get_input('river')===true) {
+  if (get_input('river')=== 'true') {
     echo elgg_view('forms/comments/add_river', array(
         'plugin' => GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN,
         'parent_guid' => $entity->guid,
