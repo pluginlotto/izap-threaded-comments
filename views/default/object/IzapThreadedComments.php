@@ -12,7 +12,6 @@
  * For discussion about corresponding plugins, visit http://www.pluginlotto.com/pg/forums/
  * Follow us on http://facebook.com/PluginLotto and http://twitter.com/PluginLotto
  */
-//elgg_echo('izap-threaded-comments:viewfull')
 $full_view = '<img style="vertical-align:middle;" src="' . $vars['url'] . 'mod/' . GLOBAL_IZAP_THREADED_COMMENTS_PLUGIN . '/_graphics/view_full.png"/> Expand all';
 $unique_id = uniqid();
 $loader = '<img src="' . $vars['url'] . 'mod/' . GLOBAL_IZAP_ELGG_BRIDGE . '/_graphics/queue.gif" id ="loadchild"/>';

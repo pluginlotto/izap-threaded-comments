@@ -1,35 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <plugin_manifest xmlns="http://www.elgg.org/plugin_manifest/1.8">
-    <name>IZAP threaded comments</name>
-    <author>iZAP Team</author>
+  <name>IZAP threaded comments</name>
+  <author>iZAP Team</author>
+  <version>2.1b</version>
+  <blurb>Provides the threaded comments functionality</blurb>
+  <description>A way to add the threaded comments to the entities </description>
+  <website>http://www.pluginlotto.com/store</website>
+  <copyright>(C) iZAP Web Solutions</copyright>
+  <licence>GNU Public Licence Version 2</licence>
+  <requires>
+    <type>elgg_version</type>
+    <version>2010030101</version>
+  </requires>
+  <requires>
+    <type>plugin</type>
+    <name>izap-elgg-bridge</name>
     <version>2.0</version>
-    <blurb>Provides the threaded comments functionality</blurb>
-    <description>A way to add the threaded comments to the entities </description>
-    <website>http://www.pluginlotto.com/store</website>
-    <copyright>(C) iZAP Web Solutions</copyright>
-    <licence>GNU Public Licence Version 2</licence>
-    <requires>
-          <type>elgg_version</type>
-          <version>2010030101</version>
-    </requires>
-
-    <requires>
-      <type>plugin</type>
-      <name>izap-elgg-bridge</name>
-      <version>2.0</version>
-    </requires>
-
-    <requires>
-      <type>priority</type>
-      <plugin>izap-elgg-bridge</plugin>
-      <priority>after</priority>
-    </requires>
-    <on_activate>
+  </requires>
+  <requires>
+    <type>priority</type>
+    <plugin>izap-elgg-bridge</plugin>
+    <priority>after</priority>
+  </requires>
+  <screenshot>
+    <description>Threaded comments</description>
+    <path>screenshots/threaded-comments.png</path>
+  </screenshot>
+  <screenshot>
+    <description>Threaded comments full</description>
+    <path>screenshots/threaded comments-full.png</path>
+  </screenshot>
+  <on_activate>
       func_update_subtype
-    </on_activate>
-
-    <category>media</category>
-    <admin_interface>advanced</admin_interface>
-
+  </on_activate>
+  <category>media</category>
+  <admin_interface>advanced</admin_interface>
 </plugin_manifest>
